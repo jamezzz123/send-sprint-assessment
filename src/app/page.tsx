@@ -50,15 +50,19 @@ export default function Home() {
             }
           />
 
-          {currentItems.map((post, index: number) => (
-            <h3
-              key={index}
-              className="mb-4 my-5 text-xl  font-medium leading-tight text-gray-900 lg:mb-3 lg:text-2xl"
-            >
-              {" "}
-              {post.id}) {post.title}
-            </h3>
-          ))}
+          {currentItems.length > 0 ? (
+            currentItems.map((post, index: number) => (
+              <h3
+                key={index}
+                className="mb-4 my-5 text-xl  font-medium leading-tight text-gray-900 lg:mb-3 lg:text-2xl"
+              >
+                {" "}
+                {post.id}) {post.title}
+              </h3>
+            ))
+          ) : (
+            <h4 className="text-xl font-medium leading-tight text-gray-900">No posts found</h4>
+          )}
         </div>
         <Pagination
           onPageChange={onPageChange}

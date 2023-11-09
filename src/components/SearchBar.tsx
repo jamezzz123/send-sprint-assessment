@@ -26,7 +26,7 @@ export default function SearchBar({ onChangeInput }: any) {
             required
           />
         </div>
-        <button className="flex items-center justify-center px-6 py-3  text-base font-medium text-blue-600 bg-white rounded-lg hover:bg-blue-200 disabled:text-gray-400">
+        <button onClick={() => setSearch("")} className="flex items-center justify-center px-6 py-3  text-base font-medium text-blue-600 bg-white rounded-lg hover:bg-blue-200 disabled:text-gray-400">
           Clear
         </button>
       </div>
