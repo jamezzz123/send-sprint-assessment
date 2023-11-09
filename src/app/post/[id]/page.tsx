@@ -43,12 +43,10 @@ export default async function Page({ params }: { params: { id: string } }) {
           <p className="my-4 text-lg font-semibold">Comments</p>
           <ul className="list-disc">
             {comments.map((comment, index) => (
-              <li
-                className="mb-4 text-md"
-                key={index}
-              >
-                {comment.body}
-              </li>
+              <div className="mb-4 text-md" key={index}>
+                <p>{comment.email}</p>
+                <p className="text-gray-500">{comment.body}</p>
+              </div>
             ))}
           </ul>
           {/* <p >comments</p> */}
