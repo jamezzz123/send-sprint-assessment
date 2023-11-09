@@ -1,12 +1,14 @@
-import { getPost } from "@/services";
+import { getPost, getComments } from "@/services";
 
 export default async function Page({ params }: { params: { id: string } }) {
   const data = await getPost(params.id);
+  const comments = await getComments(params.id);
   const currentDate = new Date().toDateString();
   const STATIC_AVATAR = "https://api.dicebear.com/7.x/big-ears-neutral/svg";
+
   return (
     <main className="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white">
-      <div className="flex justify-between px-4 mx-auto max-w-screen-xl ">
+      <div className="px-4 mx-auto max-w-screen-xl ">
         <article className="mx-auto w-full max-w-2xl">
           <header className="mb-4 lg:mb-6">
             <address className="flex items-center mb-6 not-italic">
@@ -37,6 +39,20 @@ export default async function Page({ params }: { params: { id: string } }) {
           </header>
           <p className="">{data.body}</p>
         </article>
+        <div className="mx-auto w-full max-w-2xl">
+          <p className="my-4 text-lg font-semibold">Comments</p>
+          <ul className="list-disc">
+            {comments.map((comment, index) => (
+              <li
+                className="mb-4 text-md"
+                key={index}
+              >
+                {comment.body}
+              </li>
+            ))}
+          </ul>
+          {/* <p >comments</p> */}
+        </div>
       </div>
     </main>
   );
