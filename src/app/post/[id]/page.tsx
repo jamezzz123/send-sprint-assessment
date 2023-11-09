@@ -3,6 +3,7 @@ import { getPost } from "@/services";
 export default async function Page({ params }: { params: { id: string } }) {
   const data = await getPost(params.id);
   const currentDate = new Date().toDateString();
+  const STATIC_AVATAR = "https://api.dicebear.com/7.x/big-ears-neutral/svg";
   return (
     <main className="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white">
       <div className="flex justify-between px-4 mx-auto max-w-screen-xl ">
@@ -12,7 +13,7 @@ export default async function Page({ params }: { params: { id: string } }) {
               <div className="inline-flex items-center mr-3 text-sm text-gray-900">
                 <img
                   className="mr-4 w-16 h-16 rounded-full"
-                  src="https://api.dicebear.com/7.x/big-ears-neutral/svg"
+                  src={STATIC_AVATAR}
                   alt="avatar"
                 />
                 <div>

@@ -2,7 +2,9 @@
 import Pagination from "@/components/Pagination";
 import SearchBar from "@/components/SearchBar";
 import { Post, getPosts } from "@/services";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+
 
 export default function Home() {
   const [data, setData] = useState<Post[]>([]);
@@ -10,6 +12,7 @@ export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const [currentItems, setCurrentItems] = useState<Post[]>([]);
   const [filteredData, setFilteredData] = useState<Post[]>([]);
+  const router = useRouter()
   async function fetchPost() {
     try {
       let data = await getPosts();
@@ -54,7 +57,8 @@ export default function Home() {
             currentItems.map((post, index: number) => (
               <h3
                 key={index}
-                className="mb-4 my-5 text-xl  font-medium leading-tight text-gray-900 lg:mb-3 lg:text-2xl"
+                onClick={() => router.push(`/post/${post.id}`)}
+                className="mb-4 my-5 text-xl  font-medium leading-tight text-gray-900 lg:mb-3 lg:text-2xl hover:text-blue-600"
               >
                 {" "}
                 {post.id}) {post.title}
