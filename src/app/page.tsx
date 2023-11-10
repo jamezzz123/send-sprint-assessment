@@ -5,14 +5,13 @@ import { Post, getPosts } from "@/services";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-
 export default function Home() {
   const [data, setData] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [currentItems, setCurrentItems] = useState<Post[]>([]);
   const [filteredData, setFilteredData] = useState<Post[]>([]);
-  const router = useRouter()
+  const router = useRouter();
   async function fetchPost() {
     try {
       let data = await getPosts();
@@ -40,7 +39,11 @@ export default function Home() {
   }, []);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <div className="mx-auto mb-3 w-full max-w-2xl">
+        <p>Loading...</p>
+      </div>
+    );
   }
 
   return (
@@ -65,7 +68,9 @@ export default function Home() {
               </h3>
             ))
           ) : (
-            <h4 className="text-xl font-medium leading-tight text-gray-900">No posts found</h4>
+            <h4 className="text-xl font-medium leading-tight text-gray-900">
+              No posts found
+            </h4>
           )}
         </div>
         <Pagination

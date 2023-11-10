@@ -3,6 +3,7 @@ import { getPost, getComments } from "@/services";
 export default async function Page({ params }: { params: { id: string } }) {
   const data = await getPost(params.id);
   const comments = await getComments(params.id);
+  console.log(comments);
   const currentDate = new Date().toDateString();
   const STATIC_AVATAR = "https://api.dicebear.com/7.x/big-ears-neutral/svg";
 
