@@ -14,7 +14,6 @@ export default function SearchBar({ onChangeInput }: any) {
     return () => clearTimeout(timeoutId);
   }, [search]);
   return (
-    <form>
       <div className="flex mb-6 space-x-2">
         <div className="relative flex-1">
           <input
@@ -30,6 +29,5 @@ export default function SearchBar({ onChangeInput }: any) {
           Clear
         </button>
       </div>
-    </form>
   );
 }

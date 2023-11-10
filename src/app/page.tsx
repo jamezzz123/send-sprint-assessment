@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function Home() {
+  const parPage = 10;
   const [data, setData] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -23,8 +24,8 @@ export default function Home() {
   }
 
   function onPageChange(page: number, search = "") {
-    const indexOfLastItem = page * 10;
-    const indexOfFirstItem = indexOfLastItem - 10;
+    const indexOfLastItem = page * parPage;
+    const indexOfFirstItem = indexOfLastItem - parPage;
     const filteredData = data.filter((post) =>
       post.title.toLowerCase().includes(search.toLowerCase())
     );
